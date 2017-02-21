@@ -1,1 +1,3 @@
-set hintchars=ghjfkdlsnvmc
+set hintchars=jfkdlsnvmcieruwo
+noremap <C-c> <C-v><C-c>
+noremap <C-v> <C-v><C-v>
