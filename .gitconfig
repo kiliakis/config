@@ -1,0 +1,12 @@
+[color]
+	ui = auto
+[core]
+	editor = vim
+	excludesfile = /afs/cern.ch/user/k/kiliakis/.gitignore_global
+[push]
+	default = nothing 
+[merge]
+	conflictstyle = diff3
+[user]
+	email = konstantinos.iliakis@cern.ch
+	name = Konstantinos Iliakis
