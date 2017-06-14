@@ -1,0 +1,69 @@
+[global_config]
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[4tab]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 72b7014b-357c-4791-a31d-b0bdd5263c86
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1920, 1161
+      title = kiliakis@pcbe16467:~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 955
+      ratio = 0.498697916667
+      type = HPaned
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 578
+      ratio = 0.5
+      type = VPaned
+    [[[child5]]]
+      order = 1
+      parent = child1
+      position = 578
+      ratio = 0.5
+      type = VPaned
+    [[[terminal3]]]
+      order = 0
+      parent = child2
+      profile = default
+      type = Terminal
+      uuid = d25d2aad-db33-4495-b595-c0933baf5c35
+    [[[terminal4]]]
+      order = 1
+      parent = child2
+      profile = default
+      type = Terminal
+      uuid = 72b7014b-357c-4791-a31d-b0bdd5263c86
+    [[[terminal6]]]
+      order = 0
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = 8082012a-9436-4436-8a0f-df528076d28e
+    [[[terminal7]]]
+      order = 1
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = 3f6ad046-ac4e-4a60-9b32-06f399ef387e
+[plugins]
+[profiles]
+  [[default]]
+    background_image = None
