@@ -143,7 +143,7 @@ set list
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd vimenter * NERDTree
-
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " window splitting
 set splitbelow
 set splitright
