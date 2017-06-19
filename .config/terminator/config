@@ -9,6 +9,126 @@
     [[[window0]]]
       parent = ""
       type = Window
+  [[1plus3]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 3f6ad046-ac4e-4a60-9b32-06f399ef387e
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1920, 1165
+      title = kiliakis@pcbe16467:~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 957
+      ratio = 0.499739583333
+      type = HPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 775
+      ratio = 0.667381974249
+      type = VPaned
+    [[[child4]]]
+      order = 0
+      parent = child3
+      position = 378
+      ratio = 0.490967741935
+      type = VPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 3f6ad046-ac4e-4a60-9b32-06f399ef387e
+    [[[terminal5]]]
+      order = 0
+      parent = child4
+      profile = default
+      type = Terminal
+      uuid = a89113c0-61f0-4860-8566-c4a712b3d48d
+    [[[terminal6]]]
+      order = 1
+      parent = child4
+      profile = default
+      type = Terminal
+      uuid = eb972959-a838-4e26-a923-fc946409cdcf
+    [[[terminal7]]]
+      order = 1
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = 82272eb8-16bb-4fbd-bd07-45a31912d997
+  [[2plus3]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 3f6ad046-ac4e-4a60-9b32-06f399ef387e
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1920, 1165
+      title = kiliakis@pcbe16467:~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 957
+      ratio = 0.499739583333
+      type = HPaned
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 985
+      ratio = 0.847639484979
+      type = VPaned
+    [[[child5]]]
+      order = 1
+      parent = child1
+      position = 385
+      ratio = 0.332618025751
+      type = VPaned
+    [[[child7]]]
+      order = 1
+      parent = child5
+      position = 378
+      ratio = 0.490967741935
+      type = VPaned
+    [[[terminal3]]]
+      order = 0
+      parent = child2
+      profile = default
+      type = Terminal
+      uuid = 3f6ad046-ac4e-4a60-9b32-06f399ef387e
+    [[[terminal4]]]
+      order = 1
+      parent = child2
+      profile = default
+      type = Terminal
+      uuid = 156e5ef1-9f11-4e01-93f7-f6ef036d70de
+    [[[terminal6]]]
+      order = 0
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = a89113c0-61f0-4860-8566-c4a712b3d48d
+    [[[terminal8]]]
+      order = 0
+      parent = child7
+      profile = default
+      type = Terminal
+      uuid = 82272eb8-16bb-4fbd-bd07-45a31912d997
+    [[[terminal9]]]
+      order = 1
+      parent = child7
+      profile = default
+      type = Terminal
+      uuid = df169e90-8fcc-4bea-a9fe-4496a889b904
   [[4tab]]
     [[[child0]]]
       fullscreen = False

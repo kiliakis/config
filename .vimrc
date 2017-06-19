@@ -4,6 +4,7 @@
 "
 
 " set UTF-8 encoding
+scriptencoding utf-8
 set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
@@ -103,8 +104,8 @@ endif
 
 
 " personal configurations
-set number
-let mapleader = "/"
+let mapleader = ","
+
 " vim airline
 set laststatus=2
 set clipboard=unnamed 
@@ -114,6 +115,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
+
 
 " colorscheme monokai
 let g:gruvbox_contrast_dark = 'dark'
@@ -129,17 +131,29 @@ set autochdir
 inoremap <gT>    <Esc>:tabprevious<CR>i
 inoremap <gt>    <Esc>:tabnext<CR>i
 
-set listchars=eol:¬,tab:>~,space:·
+if has("patch-7.4.710")
+    set listchars=eol:¬,tab:>~,space:·
+else
+    set listchars=eol:¬,tab:>~,trail:· ",space:·
+endif
 set list
 
-"set runtimepath+=~/.vim_runtime
 
-"source ~/.vim_runtime/vimrcs/basic.vim
-"source ~/.vim_runtime/vimrcs/filetypes.vim
-"source ~/.vim_runtime/vimrcs/plugins_config.vim
-"source ~/.vim_runtime/vimrcs/extended.vim
 
-"try
-"source ~/.vim_runtime/my_configs.vim
-"catch
-"endtry
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+autocmd vimenter * NERDTree
+
+" window splitting
+set splitbelow
+set splitright
+
+
+" my shorcuts
+" :sp and :vsp to split horizontally and vertically
+" then use Ctrl-W to navigate
+"
+" Nerd commenter
+" ,cc: curent line or selection of lines
+" ,ci: toggle the state of the selected lines individually
+" ,cu: incomment current lines
