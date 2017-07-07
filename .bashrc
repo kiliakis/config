@@ -130,14 +130,33 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
-export PS1="$purple\u$green\$(__git_ps1)$cyan \W $ $reset"
+export PS1="$purple\u$blue@\h$green\$(__git_ps1)$cyan \W $ $reset"
 LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
-# added by Anaconda3 2.4.1 installer
-#export PATH="/home/kostis/anaconda3/bin:$PATH"
-
-# added by Anaconda2 4.0.0 installer
-export PATH="/home/kostis/opt/anaconda2/bin:$PATH"
-
 alias phaethon="ssh -X -Y iliakis@phaethon.microlab.ntua.gr"
+alias bridges="ssh -X -Y -p2222  kiliakis@bridges.psc.edu"
 alias lxplus="ssh -X -Y kiliakis@lxplus"
+alias win7="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win7"
+alias win10="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win10"
+
+#export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
+
+export PYTHONPATH="$PYTHONPATH:/home/kiliakis/install/"
+# added by Anaconda3 4.4.0 installer
+export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
+# export PATH="afs/cern.ch/work/b/blond/public/install/anaconda3/bin:$PATH"
+
+# To favor qt5 instead of qt3
+export PATH="/usr/lib64/qt5/bin:$PATH"
+
+# Add paraprof and tau to $PATH
+export PATH="/home/kiliakis/install/tau-2.26.2p1/x86_64/bin/:$PATH"
+
+
+# Add install bins to $PATH
+export PATH="/home/kiliakis/install/bin:$PATH"
+
+#source /afs/cern.ch/sw/lcg/contrib/gcc/5.3.0/x86_64-centos7/setup.sh
+
+# added by Anaconda2 4.4.0 installer
+# export PATH="/home/kiliakis/install/anaconda2/bin:$PATH"
