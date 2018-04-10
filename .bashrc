@@ -135,10 +135,18 @@ LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
 alias phaethon="ssh -X -Y iliakis@phaethon.microlab.ntua.gr"
 alias bridges="ssh -X -Y -p2222  kiliakis@bridges.psc.edu"
+alias comet="ssh -X -Y kiliakis@comet.sdsc.xsede.org"
+alias stampede2="ssh -X -Y kiliakis@stampede2.tacc.utexas.edu"
+alias stampede="ssh -X -Y kiliakis@stampede.tacc.utexas.edu"
+alias lonestar="ssh -X -Y kiliakis@ls5.tacc.utexas.edu"
+alias maverick="ssh -X -Y kiliakis@maverick.tacc.utexas.edu"
+alias tlab-gpu="ssh -X -Y kiliakis@tlab-gpu-nv-03"
 alias lxplus="ssh -X -Y kiliakis@lxplus"
 alias win7="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win7"
 alias win10="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win10"
-
+alias haswell="ssh -X -Y kiliakis@olhswep19.cern.ch"
+alias mount-cvmfs-projects="sudo mount -t cvmfs projects.cern.ch /mnt/test"
+alias afsconnect="kdestroy && kinit -f -i"
 #export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
 
 export PYTHONPATH="$PYTHONPATH:/home/kiliakis/install/"

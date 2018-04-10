@@ -157,3 +157,10 @@ set splitright
 " ,cc: curent line or selection of lines
 " ,ci: toggle the state of the selected lines individually
 " ,cu: incomment current lines
+
+" for vim-latex
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+
+set wildmode=longest,list,full
+set wildmenu
