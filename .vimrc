@@ -20,7 +20,7 @@ set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
-set textwidth=80
+" set textwidth=80
 " turn syntax highlighting on
 syntax on
 " turn line numbers on
@@ -144,6 +144,13 @@ set list
 map <C-n> :NERDTreeToggle<CR>
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" autocmd VimEnter * nmap <F3> :NERDTreeToggle<CR>
+" autocmd VimEnter * imap <F3> <ESC>:NERDTreeToggle<CR>a
+" let NERDTreeQuitOnOpen=1
+" let NERDTreeWinSize=35
+"
+
 " window splitting
 set splitbelow
 set splitright
@@ -158,9 +165,17 @@ set splitright
 " ,ci: toggle the state of the selected lines individually
 " ,cu: incomment current lines
 
+
+" Start with two vertical splits 
+" au VimEnter * vsplit
+
 " for vim-latex
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 set wildmode=longest,list,full
 set wildmenu
+
+
+" for vim-autoformat
+noremap <F3> :Autoformat<CR>
