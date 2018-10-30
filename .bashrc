@@ -133,38 +133,26 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1="$purple\u$blue@\h$green\$(__git_ps1)$cyan \W $ $reset"
 LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
-alias phaethon="ssh -X -Y iliakis@phaethon.microlab.ntua.gr"
-alias bridges="ssh -X -Y -p2222  kiliakis@bridges.psc.edu"
-alias comet="ssh -X -Y kiliakis@comet.sdsc.xsede.org"
-alias stampede2="ssh -X -Y kiliakis@stampede2.tacc.utexas.edu"
-alias stampede="ssh -X -Y kiliakis@stampede.tacc.utexas.edu"
-alias lonestar="ssh -X -Y kiliakis@ls5.tacc.utexas.edu"
-alias maverick="ssh -X -Y kiliakis@maverick.tacc.utexas.edu"
-alias tlab-gpu="ssh -X -Y kiliakis@tlab-gpu-nv-03"
-alias lxplus="ssh -X -Y kiliakis@lxplus"
-alias win7="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win7"
-alias win10="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win10"
-alias haswell="ssh -X -Y kiliakis@olhswep19.cern.ch"
-alias mount-cvmfs-projects="sudo mount -t cvmfs projects.cern.ch /mnt/test"
-alias afsconnect="kdestroy && kinit -f -i"
+alias deletejobs="qselect -u $USER | xargs qdel"
+
+alias sourcegpgpusim="source /home/kiliakis/gpgpu-sim/setup_environment"
 #export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
 
 export PYTHONPATH="$PYTHONPATH:/home/kiliakis/install/"
-# added by Anaconda3 4.4.0 installer
-export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
-# export PATH="afs/cern.ch/work/b/blond/public/install/anaconda3/bin:$PATH"
-
-# To favor qt5 instead of qt3
-export PATH="/usr/lib64/qt5/bin:$PATH"
-
-# Add paraprof and tau to $PATH
-export PATH="/home/kiliakis/install/tau-2.26.2p1/x86_64/bin/:$PATH"
-
 
 # Add install bins to $PATH
 export PATH="/home/kiliakis/install/bin:$PATH"
 
-#source /afs/cern.ch/sw/lcg/contrib/gcc/5.3.0/x86_64-centos7/setup.sh
+export C_INCLUDE_PATH="$HOME/install/include"
+export CPLUS_INCLUDE_PATH="$HOME/install/include"
+export CXX_INCLUDE_PATH="$HOME/install/include"
 
-# added by Anaconda2 4.4.0 installer
-# export PATH="/home/kiliakis/install/anaconda2/bin:$PATH"
+export CUDA_INSTALL_PATH="/home/kiliakis/install/cuda"
+export NVIDIA_COMPUTE_SDK_LOCATION="/home/kiliakis/install/gpu-sdk/"
+#export PATH=$CUDA_INSTALL_PATH/bin:$PATH
+export GPGPUSIM_ROOT="/home/kiliakis/git/gpgpu-sim/"
+export LD_LIBRARY_PATH="/home/kiliakis/install/cuda/lib64/:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/lib/nvidia-384/:$LD_LIBRARY_PATH"
+export PATH="$HOME/install/cuda/bin/:$PATH"
+#export PATH="/usr/local/cuda/bin/:$PATH"
