@@ -176,6 +176,7 @@ let g:tex_flavor='latex'
 set wildmode=longest,list,full
 set wildmenu
 
-
+au BufRead,BufNewFile *.cuh set filetype=cuda 
+au BufRead,BufNewFile *.cu set filetype=cuda 
 " for vim-autoformat
 noremap <F3> :Autoformat<CR>
