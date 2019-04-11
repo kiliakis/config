@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=5000
+HISTFILESIZE=5000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -114,42 +114,66 @@ if ! shopt -oq posix; then
 fi
 
 # Enable tab completion
-source ~/.git-completion.bash
+source $HOME/.git-completion.bash
 
 # colors!
-green="\[\033[0;32m\]"
-blue="\[\033[0;34m\]"
-purple="\[\033[0;35m\]"
-reset="\[\033[0m\]"
-cyan="\[\033[0;36m\]"
-red="\[\033[0;31m\]"
-
+green="\[\e[0;32m\]"
+green_bold="\[\e[1;32m\]"
+blue="\[\e[0;34m\]"
+blue_bold="\[\e[1;34m\]"
+purple="\[\e[0;35m\]"
+purple_bold="\[\e[1;35m\]"
+reset="\[\e[0m\]"
+cyan="\[\e[0;36m\]"
+cyan_bold="\[\e[1;36m\]"
+red="\[\e[0;31m\]"
+red_bold="\[\e[1;31m\]"
+grey="\[\e[0;37m\]"
+grey_bold="\[\e[1;37m\]"
+yellow_bold="\[\e[1;33m\]"
 # Change command prompt
-source ~/.git-prompt.sh
+source $HOME/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
-export PS1="$purple\u$blue@\h$green\$(__git_ps1)$cyan \W $ $reset"
+# export PS1="$purple\u$blue@\h$green\$(__git_ps1)$cyan \W $ $reset"
+export PS1="\n$grey\t $blue\u $green\h $red\$(__git_ps1) $purple\w \n$green→$reset "
+
+# export PS1="$purple\u$green\$(__git_ps1)$cyan \W $ $reset"
 LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
+# for kinit
+export KRB5_CLIENT_KTNAME=$HOME/.kiliakis.keytab
+
+alias mount_ubuntu14="sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44:/home/kiliakis /mnt/ubuntu14"
+alias mount_gpgpusim="sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94:/home/kiliakis /mnt/gpgpusim"
+alias ssh_gpgpusim="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94"
+alias ssh_ubuntu14="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44"
 alias phaethon="ssh -X -Y iliakis@phaethon.microlab.ntua.gr"
-alias bridges="ssh -X -Y -p2222  kiliakis@bridges.psc.edu"
-alias comet="ssh -X -Y kiliakis@comet.sdsc.xsede.org"
-alias stampede2="ssh -X -Y kiliakis@stampede2.tacc.utexas.edu"
-alias stampede="ssh -X -Y kiliakis@stampede.tacc.utexas.edu"
-alias lonestar="ssh -X -Y kiliakis@ls5.tacc.utexas.edu"
-alias maverick="ssh -X -Y kiliakis@maverick.tacc.utexas.edu"
+# alias bridges="ssh -X -Y -p2222  kiliakis@bridges.psc.edu"
+# alias comet="ssh -X -Y kiliakis@comet.sdsc.xsede.org"
+# alias stampede2="ssh -X -Y kiliakis@stampede2.tacc.utexas.edu"
+# alias stampede="ssh -X -Y kiliakis@stampede.tacc.utexas.edu"
+# alias lonestar="ssh -X -Y kiliakis@ls5.tacc.utexas.edu"
+# alias maverick="ssh -X -Y kiliakis@maverick.tacc.utexas.edu"
 alias tlab-gpu="ssh -X -Y kiliakis@tlab-gpu-nv-03"
 alias lxplus="ssh -X -Y kiliakis@lxplus"
-alias win7="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win7"
-alias win10="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win10"
+alias hpcbatch="ssh -X -Y kiliakis@hpc-batch.cern.ch"
+# alias win7="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win7"
+# alias win10="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win10"
+alias wints="xfreerdp --rfx -g 1915x1110 -u kiliakis cernts.cern.ch"
 alias haswell="ssh -X -Y kiliakis@olhswep19.cern.ch"
 alias mount-cvmfs-projects="sudo mount -t cvmfs projects.cern.ch /mnt/test"
 alias afsconnect="kdestroy && kinit -f -i"
 #export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
+alias cscope-generate='find . -type f -name "*.cc" -o -name "*.h"'
+alias mount_hpcbatch='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@hpc-batch.cern.ch: /mnt/hpcbatch/'
 
-export PYTHONPATH="$PYTHONPATH:/home/kiliakis/install/"
+AFS_USER="/afs/cern.ch/user/k/kiliakis"
+AFS_WORK="/afs/cern.ch/work/k/kiliakis"
+
+export PYTHONPATH="$PYTHONPATH:$AFS_WORK/install/:$AFS_WORK/scripts/"
 # added by Anaconda3 4.4.0 installer
 export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
 # export PATH="afs/cern.ch/work/b/blond/public/install/anaconda3/bin:$PATH"
@@ -158,13 +182,36 @@ export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
 export PATH="/usr/lib64/qt5/bin:$PATH"
 
 # Add paraprof and tau to $PATH
-export PATH="/home/kiliakis/install/tau-2.26.2p1/x86_64/bin/:$PATH"
+# export PATH="/home/kiliakis/install/tau-2.26.2p1/x86_64/bin/:$PATH"
 
 
 # Add install bins to $PATH
 export PATH="/home/kiliakis/install/bin:$PATH"
+export PATH="$AFS_WORK/install/bin:$PATH"
 
+# For latex
+export PATH="/home/kiliakis/install/texlive/2017/bin/x86_64-linux/:$PATH"
+export MANPATH="/home/kiliakis/install/texlive/2017/texmf-dist/doc/man/:$MANPATH"
+export INFOPATH="/home/kiliakis/install/texlive/2017/texmf-dist/doc/info/:$INFOPATH"
+export C_INCLUDE_PATH="$AFS_WORK/install/include/:/usr/include/libxml2"
+export CPLUS_INCLUDE_PATH="$AFS_WORK/install/include/:/usr/include/libxml2"
+export CXX_INCLUDE_PATH="$AFS_WORK/install/include/:/usr/include/libxml2"
+export LD_LIBRARY_PATH="$AFS_WORK/install/lib/"
 #source /afs/cern.ch/sw/lcg/contrib/gcc/5.3.0/x86_64-centos7/setup.sh
+source /cvmfs/sft.cern.ch/lcg/contrib/gcc/5.3/x86_64-centos7/setup.sh
 
 # added by Anaconda2 4.4.0 installer
 # export PATH="/home/kiliakis/install/anaconda2/bin:$PATH"
+
+
+# for CUDA
+export PATH="$PATH:/usr/local/cuda/bin"
+export CUDA_INSTALL_PATH="/home/kiliakis/install/cuda"
+
+# for mpi
+#export PATH="/usr/lib64/openmpi3/bin:$PATH"
+#export LD_LIBRARY_PATH="/usr/lib64/openmpi3/lib/:$LD_LIBRARY_PATH"
+
+# for cool
+export PATH="$PATH:/home/kiliakis/git/cool-compiler/bin"
+
