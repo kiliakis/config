@@ -6,7 +6,7 @@
 [push]
 	default = nothing 
 [merge]
-	conflictstyle = vimdiff 
+	conflictstyle = diff3 
 [user]
 	email = konstantinos.iliakis@cern.ch
 	name = Konstantinos Iliakis
