@@ -2,11 +2,14 @@
 	ui = auto
 [core]
 	editor = vim
-	excludesfile = /afs/cern.ch/user/k/kiliakis/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = nothing 
 [merge]
-	conflictstyle = diff3 
+	conflictstyle = diff3
+    tool = vimdiff
 [user]
 	email = konstantinos.iliakis@cern.ch
 	name = Konstantinos Iliakis
+[mergetool]
+	promt = false
