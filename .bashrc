@@ -169,6 +169,10 @@ alias afsconnect="kdestroy && kinit -f -i"
 #export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
 alias cscope-generate='find . -type f -name "*.cc" -o -name "*.h"'
 alias mount_hpcbatch='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@hpc-batch.cern.ch: /mnt/hpcbatch/'
+alias ssh_xydispc="ssh -X kiliakis@147.102.37.55"
+alias ssh_xydisvm="ssh -X -p3022 kiliakis@147.102.37.55"
+alias mount_xydispc='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@147.102.37.55: /mnt/xydispc/'
+alias mount_xydisvm='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa -p3022 kiliakis@147.102.37.55: /mnt/xydisvm/'
 
 AFS_USER="/afs/cern.ch/user/k/kiliakis"
 AFS_WORK="/afs/cern.ch/work/k/kiliakis"
