@@ -151,28 +151,25 @@ alias mount_gpgpusim="sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh
 alias ssh_gpgpusim="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94"
 alias ssh_ubuntu14="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44"
 alias phaethon="ssh -X -Y iliakis@phaethon.microlab.ntua.gr"
-# alias bridges="ssh -X -Y -p2222  kiliakis@bridges.psc.edu"
-# alias comet="ssh -X -Y kiliakis@comet.sdsc.xsede.org"
-# alias stampede2="ssh -X -Y kiliakis@stampede2.tacc.utexas.edu"
-# alias stampede="ssh -X -Y kiliakis@stampede.tacc.utexas.edu"
-# alias lonestar="ssh -X -Y kiliakis@ls5.tacc.utexas.edu"
-# alias maverick="ssh -X -Y kiliakis@maverick.tacc.utexas.edu"
 alias tlab-gpu="ssh -X -Y kiliakis@tlab-gpu-nv-03"
-alias lxplus="ssh -X -Y kiliakis@lxplus"
+alias lxplus="ssh -X -Y kiliakis@lxplus.cern.ch"
 alias hpcbatch="ssh -X -Y kiliakis@hpc-batch.cern.ch"
-# alias win7="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win7"
-# alias win10="xfreerdp --rfx -g 1915x1110 -u kiliakis kiliakis-win10"
 alias wints="xfreerdp --rfx -g 1915x1110 -u kiliakis cernts.cern.ch"
 alias haswell="ssh -X -Y kiliakis@olhswep19.cern.ch"
 alias mount-cvmfs-projects="sudo mount -t cvmfs projects.cern.ch /mnt/test"
 alias afsconnect="kdestroy && kinit -f -i"
-#export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
 alias cscope-generate='find . -type f -name "*.cc" -o -name "*.h"'
 alias mount_hpcbatch='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@hpc-batch.cern.ch: /mnt/hpcbatch/'
 alias ssh_xydispc="ssh -X kiliakis@147.102.37.55"
 alias ssh_xydisvm="ssh -X -p3022 kiliakis@147.102.37.55"
 alias mount_xydispc='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@147.102.37.55: /mnt/xydispc/'
 alias mount_xydisvm='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa -p3022 kiliakis@147.102.37.55: /mnt/xydisvm/'
+
+alias ssh_pcbe16467='ssh -X kiliakis@128.141.157.58'
+alias ssh_leoforos='ssh -X kiliakis@leoforos.microlab.ntua.gr'
+alias ssh_leoforosvm='ssh -X -p3022 kiliakis@leoforos.microlab.ntua.gr'
+alias mount_leoforosvm='sudo sshfs -o allow_other,IdentityFile=$HOME/.ssh/id_rsa -p3022 kiliakis@leoforos.microlab.ntua.gr: /mnt/leoforosvm/'
+
 
 AFS_USER="/afs/cern.ch/user/k/kiliakis"
 AFS_WORK="/afs/cern.ch/work/k/kiliakis"
