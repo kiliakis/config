@@ -1,0 +1,60 @@
+{
+	"always_show_minimap_viewport": true,
+	"atomic_save": false,
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_selector": "meta.tag - punctuation.definition.tag.begin, source, text",
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Materialize/schemes/Material Primer Light.tmTheme",
+	"file_exclude_patterns":
+	[
+		"*.svn",
+		"*.git",
+		"*.hg",
+		"CVS",
+		"*tmp/cache",
+		"*._*",
+		"*.DS_Store",
+		".*"
+	],
+	"folder_exclude_patterns":
+	[
+		".*",
+		".sass-cache",
+		".svn",
+		".git"
+	],
+	"font_options":
+	[
+		"gray_antialias"
+	],
+	"font_size": 10,
+	"ignored_packages":
+	[
+		"Cscope",
+		"CSV",
+		"Python Improved",
+		"PyYapf Python Formatter",
+		"SublimeLinter-flake8",
+		"TerminalView",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"material_theme_contrast_mode": true,
+	"mini_diff": false,
+	"rulers":
+	[
+		80
+	],
+	"show_definitions": false,
+	"show_git_status": false,
+	"tab_completion": false,
+	"theme": "Material Primer Light.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"word_wrap": false
+}
