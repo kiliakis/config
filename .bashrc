@@ -114,7 +114,9 @@ if ! shopt -oq posix; then
 fi
 
 # Enable tab completion
-source $HOME/.git-completion.bash
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
 
 # colors!
 green="\[\e[0;32m\]"
@@ -131,9 +133,8 @@ red_bold="\[\e[1;31m\]"
 grey="\[\e[0;37m\]"
 grey_bold="\[\e[1;37m\]"
 yellow_bold="\[\e[1;33m\]"
+
 # Change command prompt
-source $HOME/.git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
@@ -143,76 +144,10 @@ export PS1="\n$grey\t $blue\u $green\h $red\$(__git_ps1) $purple\w \n$green→$r
 # export PS1="$purple\u$green\$(__git_ps1)$cyan \W $ $reset"
 LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
-# for kinit
-export KRB5_CLIENT_KTNAME=$HOME/.kiliakis.keytab
-
-alias mount_ubuntu14="sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44:/home/kiliakis /mnt/ubuntu14"
-alias mount_gpgpusim="sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94:/home/kiliakis /mnt/gpgpusim"
-alias ssh_gpgpusim="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94"
-alias ssh_ubuntu14="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44"
-alias phaethon="ssh -X -Y iliakis@phaethon.microlab.ntua.gr"
-alias tlab-gpu="ssh -X -Y kiliakis@tlab-gpu-nv-03"
-alias lxplus="ssh -X -Y kiliakis@lxplus.cern.ch"
-alias hpcbatch="ssh -X -Y kiliakis@hpc-batch.cern.ch"
-alias wints="xfreerdp --rfx -g 1915x1110 -u kiliakis cernts.cern.ch"
-alias haswell="ssh -X -Y kiliakis@olhswep19.cern.ch"
-alias mount-cvmfs-projects="sudo mount -t cvmfs projects.cern.ch /mnt/test"
-alias afsconnect="kdestroy && kinit -f -i"
-alias cscope-generate='find . -type f -name "*.cc" -o -name "*.h"'
-alias mount_hpcbatch='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@hpc-batch.cern.ch: /mnt/hpcbatch/'
-alias ssh_xydispc="ssh -X kiliakis@147.102.37.55"
-alias ssh_xydisvm="ssh -X -p3022 kiliakis@147.102.37.55"
-alias mount_xydispc='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@147.102.37.55: /mnt/xydispc/'
-alias mount_xydisvm='sudo sshfs -o allow_other,IdentityFile=/home/kiliakis/.ssh/id_rsa -p3022 kiliakis@147.102.37.55: /mnt/xydisvm/'
-
-alias ssh_pcbe16467='ssh -X kiliakis@128.141.157.58'
-alias ssh_leoforos='ssh -X kiliakis@leoforos.microlab.ntua.gr'
-alias ssh_leoforosvm='ssh -X -p3022 kiliakis@leoforos.microlab.ntua.gr'
-alias mount_leoforosvm='sudo sshfs -o allow_other,IdentityFile=$HOME/.ssh/id_rsa -p3022 kiliakis@leoforos.microlab.ntua.gr: /mnt/leoforosvm/'
-
-
-AFS_USER="/afs/cern.ch/user/k/kiliakis"
-AFS_WORK="/afs/cern.ch/work/k/kiliakis"
-
-export PYTHONPATH="$PYTHONPATH:$AFS_WORK/install/:$AFS_WORK/scripts/"
 # added by Anaconda3 4.4.0 installer
 export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
-# export PATH="afs/cern.ch/work/b/blond/public/install/anaconda3/bin:$PATH"
-
-# To favor qt5 instead of qt3
-export PATH="/usr/lib64/qt5/bin:$PATH"
-
-# Add paraprof and tau to $PATH
-# export PATH="/home/kiliakis/install/tau-2.26.2p1/x86_64/bin/:$PATH"
-
 
 # Add install bins to $PATH
 export PATH="/home/kiliakis/install/bin:$PATH"
-export PATH="$AFS_WORK/install/bin:$PATH"
 
-# For latex
-export PATH="/home/kiliakis/install/texlive/2017/bin/x86_64-linux/:$PATH"
-export MANPATH="/home/kiliakis/install/texlive/2017/texmf-dist/doc/man/:$MANPATH"
-export INFOPATH="/home/kiliakis/install/texlive/2017/texmf-dist/doc/info/:$INFOPATH"
-export C_INCLUDE_PATH="$AFS_WORK/install/include/:/usr/include/libxml2"
-export CPLUS_INCLUDE_PATH="$AFS_WORK/install/include/:/usr/include/libxml2"
-export CXX_INCLUDE_PATH="$AFS_WORK/install/include/:/usr/include/libxml2"
-export LD_LIBRARY_PATH="$AFS_WORK/install/lib/"
-#source /afs/cern.ch/sw/lcg/contrib/gcc/5.3.0/x86_64-centos7/setup.sh
-source /cvmfs/sft.cern.ch/lcg/contrib/gcc/5.3/x86_64-centos7/setup.sh
-
-# added by Anaconda2 4.4.0 installer
-# export PATH="/home/kiliakis/install/anaconda2/bin:$PATH"
-
-
-# for CUDA
-export PATH="$PATH:/usr/local/cuda/bin"
-export CUDA_INSTALL_PATH="/home/kiliakis/install/cuda"
-
-# for mpi
-#export PATH="/usr/lib64/openmpi3/bin:$PATH"
-#export LD_LIBRARY_PATH="/usr/lib64/openmpi3/lib/:$LD_LIBRARY_PATH"
-
-# for cool
-export PATH="$PATH:/home/kiliakis/git/cool-compiler/bin"
-
+export PYTHONPATH="$HOME/git/pyscripts/:$PYTHONPATH"
