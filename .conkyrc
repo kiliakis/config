@@ -54,7 +54,7 @@ show_graph_range no
 
 override_utf8_locale yes
 use_xft yes
-xftfont Adele:normal:size=15
+xftfont Ubuntu Mono:normal:size=15
 xftalpha 1
 uppercase no
 max_text_width 40
@@ -68,50 +68,63 @@ net_if wlp0s20f3
 
 TEXT
 # day/time
-${goto 10}${voffset 10}${font Adele:bold:size=26}${color1}${time %A}${font Adele:bold:size=26}${alignr 5}${time %H:%M}
+${goto 10}${voffset 10}${font Ubuntu Mono:bold:size=26}${color1}${time %A}${font Ubuntu Mono:bold:size=26}${alignr 5}${time %H:%M}
 #
 #calendar
-${voffset -15}${color1}${font Adele:normal:size=16}${alignc}${execpi 80000 ncal -M|sed '/\(20[0-9][0-9]\)/!s/^.*$/${offset 10}${font Courier:size=12,weight:light}${color4} &/;/\(20[0-9][0-9]\)/!s/.\{8\}$/${color3}&/;s/${color3} '"`date +%_d`"' /${color1} '"`date +%_d`"'${color3} /;/color1/!s/ '"`date +%_d`"'$c/${color1} '"`date +%_d`"'$c/;/color1/!s/ '"`date +%_d`"' /${color1} '"`date +%_d`"'${color2} /'}
+#${voffset -15}${color1}${font Ubuntu Mono:normal:size=16}${alignc}${execpi 80000 ncal -M|sed '/\(20[0-9][0-9]\)/!s/^.*$/${offset 10}${font Courier:size=12,weight:light}${color4} &/;/\(20[0-9][0-9]\)/!s/.\{8\}$/${color3}&/;s/${color3} '"`date +%_d`"' /${color1} '"`date +%_d`"'${color3} /;/color1/!s/ '"`date +%_d`"'$c/${color1} '"`date +%_d`"'$c/;/color1/!s/ '"`date +%_d`"' /${color1} '"`date +%_d`"'${color2} /'}
 #
 # info
 
-${goto 10}$color1${voffset -10}${font Adele:normal:size=16}${execi 80000 lsb_release -d | cut -f 2| tr "[:upper:]" "[:upper:]"}${alignr 5}codename: ${execi 80000 lsb_release -c | cut -f 2| tr "[:upper:]" "[:upper:]"}
+#${goto 10}$color1${voffset -10}${font Ubuntu Mono:normal:size=16}${exec lsb_release -d | cut -f 2| tr "[:upper:]" "[:upper:]"}${alignr 5}codename: ${execi 80000 lsb_release -c | cut -f 2| tr "[:upper:]" "[:upper:]"}
 # $sysname
-${goto 10}$kernel
-${goto 10}Desktop:${alignr 5}$XDG_CURRENT_DESKTOP
-${goto 10}Installation date:${alignr 5}${execi 80000 ls -ld /lost+found | cut -d' ' -f 6-7 --output-delimiter=' - '}
+#${goto 10}$kernel
+#${goto 10}Desktop:${alignr 5}$XDG_CURRENT_DESKTOP
+#${goto 10}Installation date:${alignr 5}${execi 80000 ls -ld /lost+found | cut -d' ' -f 6-7 --output-delimiter=' - '}
+${goto 10}$color1${voffset -10}${font Ubuntu Mono:normal:size=15}${exec lsb_release -d | cut -f 2| tr "[:upper:]" "[:upper:]"}${alignr 5}${kernel}
+${goto 10}Host:${alignr 5}${exec hostname}
 ${goto 10}Uptime:${alignr 5}$uptime
 #
 # cpu load/temp/graph
-${goto 10}${voffset 5}${font Adele:bold:size=16}CPU1: ${cpu cpu1}%${alignr 10}${exec sensors|grep 'Core 0'|awk '{print $3}'}
+${goto 10}${voffset 5}${color1}${font Ubuntu Mono:bold:size=15}CPU1: ${cpu cpu1}%${goto 250}${freq_g 1}GHz${alignr 10}${exec sensors|grep 'Core 0'|awk '{print substr($3,2)}'}
 ${goto 10}${voffset -5}${color2}${cpugraph cpu1 65,580 66241C FF5A45}
-${goto 10}${voffset 0}${color1}${font Adele:bold:size=16}CPU2: ${cpu cpu2}%${alignr 10}${exec sensors|grep 'Core 1'|awk '{print $3}'}
+${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=15}CPU2: ${cpu cpu2}%${goto 250}${freq_g 2}GHz${alignr 10}${exec sensors|grep 'Core 1'|awk '{print substr($3,2)}'}
 ${goto 10}${voffset -5}${color2}${cpugraph cpu2 65,580 66241C FF5A45}
-${goto 10}${voffset 0}${color1}${font Adele:bold:size=16}CPU3: ${cpu cpu3}%${alignr 10}${exec sensors|grep 'Core 2'|awk '{print $3}'}
+${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=15}CPU3: ${cpu cpu3}%${goto 250}${freq_g 3}GHz${alignr 10}${exec sensors|grep 'Core 2'|awk '{print substr($3,2)}'}
 ${goto 10}${voffset -5}${color2}${cpugraph cpu3 65,580 66241C FF5A45}
-${goto 10}${voffset 0}${color1}${font Adele:bold:size=16}CPU4: ${cpu cpu4}%${alignr 10}${exec sensors|grep 'Core 3'|awk '{print $3}'}
+${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=15}CPU4: ${cpu cpu4}%${goto 250}${freq_g 4}GHz${alignr 10}${exec sensors|grep 'Core 3'|awk '{print substr($3,2)}'}
 ${goto 10}${voffset -5}${color2}${cpugraph cpu4 65,580 66241C FF5A45}
 #
+${voffset -5}${font Ubuntu Mono:bold:size=18}${color1}${alignc}Battery ${font}
+# Status
+${voffset 4}${goto 10}Status:${alignr 10}${battery}
+# Power 
+${voffset 4}${goto 10}Power:${alignr 10}${execi 1 awk '{print $1*10^-6 " W"}' /sys/class/power_supply/BAT0/power_now}
+# Energy
+${voffset 4}${goto 10}Energy:${alignr 10}${execi 1 awk '{print $1*10^-6 " Wh"}' /sys/class/power_supply/BAT0/energy_now}
+# Remaining time
+${voffset 4}${goto 10}Remaining Time:${alignr 10}${battery_time}
+#
 # top processes
-${voffset -5}${font Adele:bold:size=18}${color1}${alignc}Top Processes ${font}
+${voffset -5}${font Ubuntu Mono:bold:size=18}${color1}${alignc}Top Processes ${font}
 ${voffset 4}${goto 10}${top name 1}${alignr 10}${top cpu 1}%
 ${goto 10}${voffset -2}${top name 2}${alignr 10}${top cpu 2}%
 ${goto 10}${voffset -2}${top name 3}${alignr 10}${top cpu 3}%
 ${goto 10}${voffset -2}${top name 4}${alignr 10}${top cpu 4}%
 #
 # top memory
-${goto 10}${voffset 10}${font Adele:bold:size=18}Memory${goto 170}${color2}${membar 15, 280}${alignr 10}${color1}$memperc%
+${goto 10}${voffset 10}${font Ubuntu Mono:bold:size=18}Memory${goto 170}${color2}${membar 15, 280}${alignr 10}${color1}$memperc%
 ${goto 10}${color1}${voffset -2}${font}${top_mem name 1}${alignr 10}${top mem 1}%
 ${goto 10}${voffset -2}${top_mem name 2}${alignr 10}${top mem 2}%
 ${goto 10}${voffset -2}${top_mem name 3}${alignr 10}${top mem 3}%
 ${goto 10}${voffset -2}${top_mem name 4}${alignr 10}${top mem 4}%
 #
 #network
-${voffset 10}${goto 10}${font Adele:bold:size=18}Network${alignr 10}${font}SSID: ${wireless_essid wlp0s20f3}
+${voffset 10}${goto 10}${font Ubuntu Mono:bold:size=18}Network${alignr 10}${font}SSID: ${wireless_essid wlp0s20f3}
 ${goto 10}Signal:${goto 170}${color2}${wireless_link_bar 15, 280 wlp0s20f3}${color1}${alignr 10}${wireless_link_qual_perc wlp0s20f3}%
-${goto 10}IP: ${alignr 10}${addr wlp0s20f3}
+${goto 10}Internal IP: ${alignr 10}${addr wlp0s20f3}
+${goto 10}External IP: ${alignr 10}${exec curl ipinfo.io/ip}
 ${voffset 5}${goto 10}${color1}Upspeed:${alignr 10}${upspeed wlp0s20f3}
-${voffset 5}${goto 10}${color1}Downspeed:${alignr 10}${downspeed wlp0s20f3}
+#${voffset 5}${goto 10}${color1}Downspeed:${alignr 10}${downspeed wlp0s20f3}
 ${goto 10}${voffset 20}Total up:${alignr 10}${totalup wlp0s20f3}
 ${goto 10}${color2}${upspeedgraph wlp0s20f3 65,580 66241C FF5A45 100 -l}
 ${goto 10}${color1}Down:$color1${alignr 10}${downspeed wlp0s20f3}
@@ -128,10 +141,10 @@ ${goto 10}${color2}${downspeedgraph wlp0s20f3 65,580 66241C FF5A45 100 -l}
 
 
 #${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=727232&u=c" -o ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml}\
-#${font Adele:light:size=16}${goto 10}${color1}${voffset 0}${execi 300 grep "yweather:location" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}, ${execi 300 grep "yweather:location" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "country=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
+#${font Ubuntu Mono:light:size=16}${goto 10}${color1}${voffset 0}${execi 300 grep "yweather:location" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}, ${execi 300 grep "yweather:location" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "country=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
 #
 ## weather discription
-#${goto 10}${voffset 0}${color1}${font Adele:light:size=16}\
+#${goto 10}${voffset 0}${color1}${font Ubuntu Mono:light:size=16}\
 #${execi 360 grep "yweather:condition" ~/.conkyrt/Sidebar-Conky/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}\
 #${font}
 ##
