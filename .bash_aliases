@@ -1,13 +1,14 @@
 alias mount_ubuntu14="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44:/home/kiliakis ~/mountdirs/ubuntu14"
 alias mount_gpgpusim="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94:/home/kiliakis ~/mountdirs/gpgpusimVM"
-alias ssh_gpgpusim="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94"
-alias ssh_ubuntu14="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44"
+alias ssh_gpgpusim="ssh -Xt -J kiliakis@lxplus.cern.ch kiliakis@188.184.87.94"
+#alias ssh_gpgpusim="ssh -X -i /home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94"
+alias ssh_ubuntu14="ssh -Xt -J kiliakis@lxplus.cern.ch kiliakis@137.138.152.44"
 alias phaethon="ssh -X -Y iliakis@phaethon.microlab.ntua.gr"
 alias tlab-gpu="ssh -X -Y kiliakis@tlab-gpu-nv-03"
 alias lxplus="ssh -X -Y kiliakis@lxplus.cern.ch"
 alias hpcbatch="ssh -X -Y kiliakis@hpc-batch.cern.ch"
 alias wints="xfreerdp --rfx -g 1915x1110 -u kiliakis cernts.cern.ch"
-alias haswell="ssh -X -Y kiliakis@olhswep19.cern.ch"
+alias ssh_haswell="ssh -Xt -J kiliakis@lxplus.cern.ch kiliakis@olhswep19.cern.ch"
 alias mount-cvmfs-projects="sudo mount -t cvmfs projects.cern.ch ~/mountdirs/test"
 alias afsconnect="kdestroy && kinit -f -i"
 alias cscope-generate='find . -type f -name "*.cc" -o -name "*.h"'
@@ -27,3 +28,4 @@ alias spotify='spotify --force-device-scale-factor=2'
 
 alias ntuavpn='sudo openvpn ~/Documents/ntua.ovpn'
 
+alias conkyrestart='pkill -HUP conky'

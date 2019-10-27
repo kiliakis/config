@@ -1,135 +1,142 @@
+conky.config = {
 
-############################################################################################
-# Sidebar-Conky					 					   #
-# by wim66 https://www.google.com/+WillemO						   #
-# 26-5-15										   #
-# "Inspired by" other people's code							   #
-# Calendar, more great conky's http://erikdubois.be/category/conky			   #
-# Jesse Avalos http://speedracker.deviantart.com/					   #
-# Weather font by Kelly Kretchek https://plus.google.com/u/0/103934698784251707937/posts   #
-# Wallpaper http://0rax0.deviantart.com/art/Linux-2014-Wallpaper-457151439		   #
-# Use with Conky-Manager								   #
-# http://www.teejeetech.in/p/conky-manager.html						   #
-#											   #
-############################################################################################
+--###########################################################################################
+-- Sidebar-Conky					 					   #
+-- by wim66 https://www.google.com/+WillemO						   #
+-- 26-5-15										   #
+-- "Inspired by" other people's code							   #
+-- Calendar, more great conky's http://erikdubois.be/category/conky			   #
+-- Jesse Avalos http://speedracker.deviantart.com/					   #
+-- Weather font by Kelly Kretchek https://plus.google.com/u/0/103934698784251707937/posts   #
+-- Wallpaper http://0rax0.deviantart.com/art/Linux-2014-Wallpaper-457151439		   #
+-- Use with Conky-Manager								   #
+-- http://www.teejeetech.in/p/conky-manager.html						   #
+--											   #
+--###########################################################################################
 
-background yes
-double_buffer yes
-no_buffers yes
-text_buffer_size 2048
-imlib_cache_size 0
-update_interval 5
-cpu_avg_samples 5
-format_human_readable
+	background = true,
+	double_buffer = true,
+	no_buffers = true,
+	text_buffer_size = 2048,
+	imlib_cache_size = 0,
+	update_interval = 5,
+	cpu_avg_samples = 5,
+--	cpu_avg_samples = 5,
+	format_human_readable = true,
+	alignment = 'top_right',
+	gap_x = 0,
+	gap_y = 30,
+	minimum_width = 384,
+	minimum_height = 2304,
+	maximum_width = 384,
 
-alignment top_right
-gap_x 0
-gap_y 0
-minimum_size 600 2304
-maximum_width 600
+	own_window = true,
+	own_window_type = 'desktop',-- options are: normal/override/dock/desktop/panel
+	own_window_class = 'Conky',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_transparent = true,
+--own_window_colour 333333
+	own_window_colour = '#000000',
+	own_window_argb_visual = true,
+--	own_window_argb_value = 0,
+--	display = 1,
+	border_inner_margin = 0,
+	border_outer_margin = 0,
 
-own_window yes
-own_window_type normal	# options are: normal/override/dock/desktop/panel
-own_window_class Conky
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_transparent yes
-#own_window_colour 333333
-own_window_colour 000000
-own_window_argb_visual yes
-own_window_argb_value 0
+	default_bar_width = 100, default_bar_height = 6,
+	draw_shades = false,
+	default_shade_color = '#000000',
+	draw_outline = false,
+	default_outline_color = '#000000',
+	draw_borders = false,
+	draw_graph_borders = true,
+	default_graph_width = 64,384,
+	show_graph_scale = false,
+	show_graph_range = false,
 
-border_inner_margin 0
-border_outer_margin 0
+	override_utf8_locale = true,
+	use_xft = true,
+	font = 'Ubuntu Mono:normal:size=12',
+	xftalpha = 1,
+	uppercase = false,
+	max_text_width = 40,
 
-default_bar_size 100 6
-draw_shades no
-default_shade_color 000000
-draw_outline no
-default_outline_color 000000
-draw_borders no
-draw_graph_borders yes
-default_graph_size 100,580
-show_graph_scale no
-show_graph_range no
+	xinerama_head = 3,
 
-override_utf8_locale yes
-use_xft yes
-xftfont Ubuntu Mono:normal:size=15
-xftalpha 1
-uppercase no
-max_text_width 40
+	default_color = '#ffffff',
+	color1 = '#ffffff',
+	color2 = '#FF5A45',
+	color3 = '#81CAE0',
+	color4 = '#FF5A45',
 
-default_color ffffff
-color1 ffffff
-color2 FF5A45
-color3 81CAE0
-color4 FF5A45
-net_if wlp0s20f3
+};
 
-TEXT
+conky.text = [[
 # day/time
-${goto 10}${voffset 10}${font Ubuntu Mono:bold:size=26}${color1}${time %A}${font Ubuntu Mono:bold:size=26}${alignr 5}${time %H:%M}
+${goto 10}${voffset 0}${font Ubuntu Mono:bold:size=23}${color1}${time %A}${font Ubuntu Mono:bold:size=23}${alignr 5}${time %H:%M}
 #
 #calendar
 #${voffset -15}${color1}${font Ubuntu Mono:normal:size=16}${alignc}${execpi 80000 ncal -M|sed '/\(20[0-9][0-9]\)/!s/^.*$/${offset 10}${font Courier:size=12,weight:light}${color4} &/;/\(20[0-9][0-9]\)/!s/.\{8\}$/${color3}&/;s/${color3} '"`date +%_d`"' /${color1} '"`date +%_d`"'${color3} /;/color1/!s/ '"`date +%_d`"'$c/${color1} '"`date +%_d`"'$c/;/color1/!s/ '"`date +%_d`"' /${color1} '"`date +%_d`"'${color2} /'}
 #
 # info
-
 #${goto 10}$color1${voffset -10}${font Ubuntu Mono:normal:size=16}${exec lsb_release -d | cut -f 2| tr "[:upper:]" "[:upper:]"}${alignr 5}codename: ${execi 80000 lsb_release -c | cut -f 2| tr "[:upper:]" "[:upper:]"}
 # $sysname
 #${goto 10}$kernel
 #${goto 10}Desktop:${alignr 5}$XDG_CURRENT_DESKTOP
 #${goto 10}Installation date:${alignr 5}${execi 80000 ls -ld /lost+found | cut -d' ' -f 6-7 --output-delimiter=' - '}
-${goto 10}$color1${voffset -10}${font Ubuntu Mono:normal:size=15}${exec lsb_release -d | cut -f 2| tr "[:upper:]" "[:upper:]"}${alignr 5}${kernel}
+${goto 10}$color1${voffset -10}${font Ubuntu Mono:normal:size=12}${exec lsb_release -d | cut -f 2| tr "[:upper:]" "[:upper:]"}${alignr 5}${kernel}
 ${goto 10}Host:${alignr 5}${exec hostname}
 ${goto 10}Uptime:${alignr 5}$uptime
 #
 # cpu load/temp/graph
-${goto 10}${voffset 5}${color1}${font Ubuntu Mono:bold:size=15}CPU1: ${cpu cpu1}%${goto 250}${freq_g 1}GHz${alignr 10}${exec sensors|grep 'Core 0'|awk '{print substr($3,2)}'}
-${goto 10}${voffset -5}${color2}${cpugraph cpu1 65,580 66241C FF5A45}
-${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=15}CPU2: ${cpu cpu2}%${goto 250}${freq_g 2}GHz${alignr 10}${exec sensors|grep 'Core 1'|awk '{print substr($3,2)}'}
-${goto 10}${voffset -5}${color2}${cpugraph cpu2 65,580 66241C FF5A45}
-${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=15}CPU3: ${cpu cpu3}%${goto 250}${freq_g 3}GHz${alignr 10}${exec sensors|grep 'Core 2'|awk '{print substr($3,2)}'}
-${goto 10}${voffset -5}${color2}${cpugraph cpu3 65,580 66241C FF5A45}
-${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=15}CPU4: ${cpu cpu4}%${goto 250}${freq_g 4}GHz${alignr 10}${exec sensors|grep 'Core 3'|awk '{print substr($3,2)}'}
-${goto 10}${voffset -5}${color2}${cpugraph cpu4 65,580 66241C FF5A45}
+${goto 10}${voffset 5}${color1}${font Ubuntu Mono:bold:size=12}CPU1 L:${cpu cpu1}%${goto 160}f:${freq_g 1}GHz${alignr 10}T:${exec sensors|grep 'Core 0'|awk '{print substr($3,2)}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu1 48,364 66241C FF5A45}
+${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=12}CPU2 L:${cpu cpu2}%${goto 160}f:${freq_g 2}GHz${alignr 10}T:${exec sensors|grep 'Core 1'|awk '{print substr($3,2)}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu2 48,364 66241C FF5A45}
+${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=12}CPU3 L:${cpu cpu3}%${goto 160}f:${freq_g 3}GHz${alignr 10}T:${exec sensors|grep 'Core 2'|awk '{print substr($3,2)}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu3 48,364 66241C FF5A45}
+${goto 10}${voffset 0}${color1}${font Ubuntu Mono:bold:size=12}CPU4 L:${cpu cpu4}%${goto 160}f:${freq_g 4}GHz${alignr 10}T:${exec sensors|grep 'Core 3'|awk '{print substr($3,2)}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu4 48,364 66241C FF5A45}
 #
-${voffset -5}${font Ubuntu Mono:bold:size=18}${color1}${alignc}Battery ${font}
+#
+${goto 10}${voffset 5}${font Ubuntu Mono:bold:size=15}${color1}Battery${font}
 # Status
-${voffset 4}${goto 10}Status:${alignr 10}${battery}
+${goto 10}${voffset 0}Status:${alignr 10}${battery}
 # Power 
-${voffset 4}${goto 10}Power:${alignr 10}${execi 1 awk '{print $1*10^-6 " W"}' /sys/class/power_supply/BAT0/power_now}
+${goto 10}${voffset -2}Power:${alignr 10}${execi 1 awk '{print $1*10^-6 " W"}' /sys/class/power_supply/BAT0/power_now}
 # Energy
-${voffset 4}${goto 10}Energy:${alignr 10}${execi 1 awk '{print $1*10^-6 " Wh"}' /sys/class/power_supply/BAT0/energy_now}
+${goto 10}${voffset -2}Energy:${alignr 10}${execi 1 awk '{print $1*10^-6 " Wh"}' /sys/class/power_supply/BAT0/energy_now}
 # Remaining time
-${voffset 4}${goto 10}Remaining Time:${alignr 10}${battery_time}
+${goto 10}${voffset -2}Remaining Time:${alignr 10}${battery_time}
+# Fan status
+${goto 10}${voffset -2}Fan:${alignr 10}${execi 1 sensors | grep "fan" | awk '{print $2" RPM"}'}
 #
 # top processes
-${voffset -5}${font Ubuntu Mono:bold:size=18}${color1}${alignc}Top Processes ${font}
-${voffset 4}${goto 10}${top name 1}${alignr 10}${top cpu 1}%
+${goto 10}${voffset 5}${font Ubuntu Mono:bold:size=15}${color1}Processes${font}
+${goto 10}${voffset 0}${top name 1}${alignr 10}${top cpu 1}%
 ${goto 10}${voffset -2}${top name 2}${alignr 10}${top cpu 2}%
 ${goto 10}${voffset -2}${top name 3}${alignr 10}${top cpu 3}%
 ${goto 10}${voffset -2}${top name 4}${alignr 10}${top cpu 4}%
 #
 # top memory
-${goto 10}${voffset 10}${font Ubuntu Mono:bold:size=18}Memory${goto 170}${color2}${membar 15, 280}${alignr 10}${color1}$memperc%
+${goto 10}${voffset 5}${font Ubuntu Mono:bold:size=15}Memory${alignc}${color2}${membar 8, 128}${alignr 10}${color1}$memperc%
 ${goto 10}${color1}${voffset -2}${font}${top_mem name 1}${alignr 10}${top mem 1}%
 ${goto 10}${voffset -2}${top_mem name 2}${alignr 10}${top mem 2}%
 ${goto 10}${voffset -2}${top_mem name 3}${alignr 10}${top mem 3}%
 ${goto 10}${voffset -2}${top_mem name 4}${alignr 10}${top mem 4}%
 #
 #network
-${voffset 10}${goto 10}${font Ubuntu Mono:bold:size=18}Network${alignr 10}${font}SSID: ${wireless_essid wlp0s20f3}
-${goto 10}Signal:${goto 170}${color2}${wireless_link_bar 15, 280 wlp0s20f3}${color1}${alignr 10}${wireless_link_qual_perc wlp0s20f3}%
+${goto 10}${voffset 5}${font Ubuntu Mono:bold:size=15}Network${alignr 10}${font}SSID: ${wireless_essid wlp0s20f3}
+${goto 10}Signal:${alignc}${color2}${wireless_link_bar 8, 128 wlp0s20f3}${color1}${alignr 10}${wireless_link_qual_perc wlp0s20f3}%
 ${goto 10}Internal IP: ${alignr 10}${addr wlp0s20f3}
 ${goto 10}External IP: ${alignr 10}${exec curl ipinfo.io/ip}
-${voffset 5}${goto 10}${color1}Upspeed:${alignr 10}${upspeed wlp0s20f3}
+${goto 10}${voffset 0}${color1}Upspeed:${alignr 10}${upspeed wlp0s20f3}
 #${voffset 5}${goto 10}${color1}Downspeed:${alignr 10}${downspeed wlp0s20f3}
-${goto 10}${voffset 20}Total up:${alignr 10}${totalup wlp0s20f3}
-${goto 10}${color2}${upspeedgraph wlp0s20f3 65,580 66241C FF5A45 100 -l}
+${goto 10}${voffset 5}Total up:${alignr 10}${totalup wlp0s20f3}
+${goto 10}${color2}${upspeedgraph wlp0s20f3 48,364 66241C FF5A45 100 -l}
 ${goto 10}${color1}Down:$color1${alignr 10}${downspeed wlp0s20f3}
 ${goto 10}Total down:${alignr 10}${totaldown wlp0s20f3}
-${goto 10}${color2}${downspeedgraph wlp0s20f3 65,580 66241C FF5A45 100 -l}
+${goto 10}${color2}${downspeedgraph wlp0s20f3 48,364 66241C FF5A45 100 -l}
 
 
 
@@ -162,3 +169,4 @@ ${goto 10}${color2}${downspeedgraph wlp0s20f3 65,580 66241C FF5A45 100 -l}
 ##
 #${image ~/.conkyrt/Sidebar-Conky/arrow-down.png -p 130,2048 -s 30x30}
 ##
+]];
