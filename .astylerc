@@ -1,0 +1,16 @@
+# ROOT code formatting style
+# Note that the brackets=linux option is not available starting from astyle 2.04
+#brackets=linux
+style=stroustrup
+mode=c
+align-pointer=name
+indent=spaces=3
+indent-switches
+indent-cases
+indent-namespaces
+max-instatement-indent=40
+indent-preprocessor
+convert-tabs
+pad-header
+pad-oper
+unpad-paren

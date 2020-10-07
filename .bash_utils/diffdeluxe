@@ -1,0 +1,61 @@
+#!/usr/bin/python3
+import argparse
+import os
+import glob
+import sys
+import subprocess
+
+parser = argparse.ArgumentParser(description='Generate a diff between two directories.',
+                                 usage='diffdelux indir1 indir2 outfile')
+
+parser.add_argument('indir1', type=str,
+                    help='The first input directory.')
+
+parser.add_argument('indir2', type=str,
+                    help='The second input directory.')
+
+parser.add_argument('outfile', type=str,
+                    help='The file to save the diff.')
+
+parser.add_argument('-r', '--recursive', action='store_true',
+                    help='Recurse into subdirs')
+
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+
+    files1 = []
+    for f in glob.iglob(args.indir1 + '**', recursive=args.recursive):
+        if os.path.isfile(f):
+            files1.append(f.replace(args.indir1, ''))
+
+    files2 = []
+    for f in glob.iglob(args.indir2 + '**', recursive=args.recursive):
+        if os.path.isfile(f):
+            files2.append(f.replace(args.indir2, ''))
+
+    files1 = set(files1)
+    files2 = set(files2)
+
+    with open(args.outfile, 'w') as outf:
+
+        print(f'Files in {args.indir1} and not in {args.indir2}', file=outf)
+        print(files1 - files2, file=outf)
+
+        print(f'Files in {args.indir2} and not in {args.indir1}', file=outf)
+        print(files2 - files1, file=outf)
+
+        common_files = files1 & files2
+        for f in common_files:
+            print(''.join(['-']*80), file=outf)
+            print(f'file1: {args.indir1+f}', file=outf)
+            print(f'file2: {args.indir2+f}', file=outf)
+            ret = subprocess.run(['diff', '--color', '-b', '-Z', '-E', '-w',
+                                  args.indir1+f,
+                                  args.indir2+f],
+                                 capture_output=True,
+                                 text=True)
+            if ret.returncode == 0:
+                print('No changes', file=outf)
+            else:
+                print(ret.stdout, file=outf)

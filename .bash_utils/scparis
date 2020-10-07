@@ -1,0 +1,25 @@
+#!/bin/bash
+
+while getopts ":hft" opt; do 
+    case ${opt} in
+      h )
+        echo "Usage:"
+        echo "    scparis [-f] [-t] source dest"
+        exit 0
+        ;;
+      f )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        scp -r kiliakis@login.aris.grnet.gr:"$other" $last
+        ;;
+      t )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        scp -r $other kiliakis@login.aris.grnet.gr:$last
+        ;;
+      \? ) echo "Usage scparis [-f] [-t] source dest"
+        ;;
+     esac
+done

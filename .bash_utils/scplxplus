@@ -1,0 +1,25 @@
+#!/bin/bash
+
+while getopts ":hft" opt; do 
+    case ${opt} in
+      h )
+        echo "Usage:"
+        echo "    scplxplus [-f] [-t] source dest"
+        exit 0
+        ;;
+      f )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        scp -r kiliakis@lxplus.cern.ch:"$other" $last
+        ;;
+      t )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        scp -r $other kiliakis@lxplus.cern.ch:$last
+        ;;
+      \? ) echo "Usage scplxplus [-f] [-t] source dest"
+        ;;
+     esac
+done
