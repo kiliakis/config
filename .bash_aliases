@@ -11,7 +11,7 @@ alias ssh_ubuntu14="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus.cern.c
 # alias mount_gpgpusim="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94:/home/kiliakis ~/mountdirs/gpgpusimVM"
 alias ssh_gpgpusim="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus.cern.ch kiliakis@188.184.87.94"
 
-alias lxplus="sshpass -f ~/.lxplus.pass ssh -4 -Y kiliakis@lxplus.cern.ch"
+alias lxplus="sshpass -f ~/.lxplus.pass ssh -4 kiliakis@lxplus.cern.ch"
 
 alias ssh_hpcbatch="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus.cern.ch kiliakis@hpc-batch.cern.ch"
 # alias mount_hpcbatch='sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@hpc-batch.cern.ch: ~/mountdirs/hpcbatch/'
@@ -31,6 +31,8 @@ alias ssh_leoforos='ssh -X kiliakis@leoforos.microlab.ntua.gr'
 alias ssh_leoforosvm='ssh -Xt -J kiliakis@leoforos.microlab.ntua.gr kiliakis@192.168.56.101'
 alias mount_leoforos='sshfs -o IdentityFile=$HOME/.ssh/id_rsa kiliakis@leoforos.microlab.ntua.gr: ~/mountdirs/leoforos/'
 
+alias ssh_liono="ssh -X kiliakis@liono.microlab.ntua.gr"
+alias mount_liono="sshfs -o IdentityFile=$HOME/.ssh/id_rsa kiliakis@liono.microlab.ntua.gr: ~/mountdirs/liono"
 
 # Local vms
 alias start_local14="vboxmanage startvm local14 --type headless"
