@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=5000
+HISTFILESIZE=5000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -92,7 +92,7 @@ alias l='ls -CF'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
+alias update_gcc="sudo update-alternatives --config gcc"
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -114,45 +114,65 @@ if ! shopt -oq posix; then
 fi
 
 # Enable tab completion
-source ~/.git-completion.bash
+source $HOME/.git-completion.bash
 
 # colors!
-green="\[\033[0;32m\]"
-blue="\[\033[0;34m\]"
-purple="\[\033[0;35m\]"
-reset="\[\033[0m\]"
-cyan="\[\033[0;36m\]"
-red="\[\033[0;31m\]"
-
+green="\[\e[0;32m\]"
+green_bold="\[\e[1;32m\]"
+blue="\[\e[0;34m\]"
+blue_bold="\[\e[1;34m\]"
+purple="\[\e[0;35m\]"
+purple_bold="\[\e[1;35m\]"
+reset="\[\e[0m\]"
+cyan="\[\e[0;36m\]"
+cyan_bold="\[\e[1;36m\]"
+red="\[\e[0;31m\]"
+red_bold="\[\e[1;31m\]"
+grey="\[\e[0;37m\]"
+grey_bold="\[\e[1;37m\]"
+yellow_bold="\[\e[1;33m\]"
 # Change command prompt
-source ~/.git-prompt.sh
+source $HOME/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
-export PS1="$purple\u$blue@\h$green\$(__git_ps1)$cyan \W $ $reset"
+# export PS1="$purple\u$blue@\h$green\$(__git_ps1)$cyan \W $ $reset"
+export PS1="\n$grey\t $blue\u $green\h $red\$(__git_ps1) $purple\w \n$green→$reset "
+
+
 LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
 alias deletejobs="qselect -u $USER | xargs qdel"
-
-alias sourcegpgpusim="source /home/kiliakis/gpgpu-sim/setup_environment"
+alias mywatch="watch -n30 'qstat | wc -l'" 
+alias sourcegpgpusim="source $HOME/gpgpu-sim/setup_environment"
 #export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
-
-export PYTHONPATH="$PYTHONPATH:/home/kiliakis/install/"
+export PYTHONPATH="$PYTHONPATH:$HOME/install/"
 
 # Add install bins to $PATH
-export PATH="/home/kiliakis/install/bin:$PATH"
+export PATH="$HOME/install/bin:$PATH"
 
 export C_INCLUDE_PATH="$HOME/install/include"
 export CPLUS_INCLUDE_PATH="$HOME/install/include"
 export CXX_INCLUDE_PATH="$HOME/install/include"
 
-export CUDA_INSTALL_PATH="/home/kiliakis/install/cuda"
-export NVIDIA_COMPUTE_SDK_LOCATION="/home/kiliakis/install/gpu-sdk/"
-#export PATH=$CUDA_INSTALL_PATH/bin:$PATH
-export GPGPUSIM_ROOT="/home/kiliakis/git/gpgpu-sim/"
-export LD_LIBRARY_PATH="/home/kiliakis/install/cuda/lib64/:$LD_LIBRARY_PATH"
+#export CUDA_HOME="/usr/local/cuda-7.0/"
+#export CUDA_HOME="/usr/local/cuda-9.0/"
+export CUDA_HOME="$HOME/install/cuda/"
+
+export CUDA_INSTALL_PATH=$CUDA_HOME
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64/:$LD_LIBRARY_PATH"
+export NVIDIA_COMPUTE_SDK_LOCATION="$HOME/install/gpu-sdk/"
+
+
+export PATH="$CUDA_HOME/bin:$PATH"
+export GPGPUSIM_ROOT="$HOME/gpgpu-sim/"
 export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="/usr/lib/nvidia-384/:$LD_LIBRARY_PATH"
-export PATH="$HOME/install/cuda/bin/:$PATH"
 #export PATH="/usr/local/cuda/bin/:$PATH"
+export CUDNN_INCLUDE_DIR="/usr/include/"
+
+export CUDNN_LIBRARY="/usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a"
+export TORCH_CUDA_ARCH_LIST="6.1+PTX"
+
+export PYTORCH_BIN="/home/kiliakis/git/pytorch-gpgpu-sim/torch/lib/libcaffe2_gpu.so"
