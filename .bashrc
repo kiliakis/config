@@ -145,7 +145,7 @@ LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
 alias deletejobs="qselect -u $USER | xargs qdel"
 alias mywatch="watch -n30 'qstat | wc -l'" 
-alias sourcegpgpusim="source $HOME/gpgpu-sim/setup_environment"
+# alias sourcegpgpusim="source $HOME/gpgpu-sim/setup_environment"
 #export PATH="/afs/cern.ch/user/b/blond/work/public/install/anaconda3/bin:$PATH"
 export PYTHONPATH="$PYTHONPATH:$HOME/install/"
 
@@ -158,21 +158,21 @@ export CXX_INCLUDE_PATH="$HOME/install/include"
 
 #export CUDA_HOME="/usr/local/cuda-7.0/"
 #export CUDA_HOME="/usr/local/cuda-9.0/"
-export CUDA_HOME="$HOME/install/cuda/"
+export CUDA_HOME="/usr/local/cuda"
 
 export CUDA_INSTALL_PATH=$CUDA_HOME
-export LD_LIBRARY_PATH="$CUDA_HOME/lib64/:$LD_LIBRARY_PATH"
-export NVIDIA_COMPUTE_SDK_LOCATION="$HOME/install/gpu-sdk/"
+# export LD_LIBRARY_PATH="$CUDA_HOME/lib64/:$LD_LIBRARY_PATH"
+# export NVIDIA_COMPUTE_SDK_LOCATION="$HOME/install/gpu-sdk/"
 
 
 export PATH="$CUDA_HOME/bin:$PATH"
-export GPGPUSIM_ROOT="$HOME/gpgpu-sim/"
-export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH="/usr/lib/nvidia-384/:$LD_LIBRARY_PATH"
+# export GPGPUSIM_ROOT="$HOME/gpgpu-sim/"
+# export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH="/usr/lib/nvidia-384/:$LD_LIBRARY_PATH"
 #export PATH="/usr/local/cuda/bin/:$PATH"
-export CUDNN_INCLUDE_DIR="/usr/include/"
+# export CUDNN_INCLUDE_DIR="/usr/include/"
 
-export CUDNN_LIBRARY="/usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a"
-export TORCH_CUDA_ARCH_LIST="6.1+PTX"
+# export CUDNN_LIBRARY="/usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a"
+# export TORCH_CUDA_ARCH_LIST="6.1+PTX"
 
-export PYTORCH_BIN="/home/kiliakis/git/pytorch-gpgpu-sim/torch/lib/libcaffe2_gpu.so"
+# export PYTORCH_BIN="/home/kiliakis/git/pytorch-gpgpu-sim/torch/lib/libcaffe2_gpu.so"
