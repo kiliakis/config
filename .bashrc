@@ -176,3 +176,16 @@ export PATH="$CUDA_HOME/bin:$PATH"
 # export TORCH_CUDA_ARCH_LIST="6.1+PTX"
 
 # export PYTORCH_BIN="/home/kiliakis/git/pytorch-gpgpu-sim/torch/lib/libcaffe2_gpu.so"
+export BINDIR=/root/gpu-app-collection/src/..//bin/10.1
+export MAKE_ARGS= GENCODE_SM10= GENCODE_SM13= GENCODE_SM20= GENCODE_SM20= CUBLAS_LIB=cublas_static CUDNN_LIB=cudnn_static
+export GPUAPPS_SETUP_ENVIRONMENT_WAS_RUN=1
+export GPUAPPS_ROOT=/root/gpu-app-collection/src/../
+export CUDA_PATH=/usr/local/cuda
+export NVDIA_COMPUTE_SDK_LOCATION=
+export CUDA_VERSION=10.1
+export CUDA_VERSION_MAJOR=10
+export CUDAHOME=/usr/local/cuda
+export BINSUBDIR=release
+export CUDA_CPPFLAGS= -gencode=arch=compute_30,code=compute_30 -gencode=arch=compute_35,code=compute_35 -gencode=arch=compute_50,code=compute_50 -gencode=arch=compute_60,code=compute_60 -gencode=arch=compute_62,code=compute_62 -gencode=arch=compute_70,code=compute_70 -gencode=arch=compute_75,code=compute_75 --cudart shared
+export NVCC_ADDITIONAL_ARGS=--cudart shared
+export GENCODE_FLAGS= -gencode=arch=compute_30,code=compute_30 -gencode=arch=compute_35,code=compute_35 -gencode=arch=compute_50,code=compute_50 -gencode=arch=compute_60,code=compute_60 -gencode=arch=compute_62,code=compute_62 -gencode=arch=compute_70,code=compute_70 -gencode=arch=compute_75,code=compute_75
