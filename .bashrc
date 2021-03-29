@@ -182,10 +182,10 @@ export GPUAPPS_SETUP_ENVIRONMENT_WAS_RUN=1
 export GPUAPPS_ROOT=/root/gpu-app-collection/src/../
 export CUDA_PATH=/usr/local/cuda
 export NVDIA_COMPUTE_SDK_LOCATION=
-export CUDA_VERSION=10.1
+export CUDA_VERSION="10.1"
 export CUDA_VERSION_MAJOR=10
 export CUDAHOME=/usr/local/cuda
 export BINSUBDIR=release
 export CUDA_CPPFLAGS="-gencode=arch=compute_30,code=compute_30 -gencode=arch=compute_35,code=compute_35 -gencode=arch=compute_50,code=compute_50 -gencode=arch=compute_60,code=compute_60 -gencode=arch=compute_62,code=compute_62 -gencode=arch=compute_70,code=compute_70 -gencode=arch=compute_75,code=compute_75 --cudart shared"
-export NVCC_ADDITIONAL_ARGS=--cudart shared
+export NVCC_ADDITIONAL_ARGS="--cudart shared"
 export GENCODE_FLAGS="-gencode=arch=compute_30,code=compute_30 -gencode=arch=compute_35,code=compute_35 -gencode=arch=compute_50,code=compute_50 -gencode=arch=compute_60,code=compute_60 -gencode=arch=compute_62,code=compute_62 -gencode=arch=compute_70,code=compute_70 -gencode=arch=compute_75,code=compute_75"
