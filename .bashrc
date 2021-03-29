@@ -152,10 +152,10 @@ export PYTHONPATH="$PYTHONPATH:$HOME/install/"
 # Add install bins to $PATH
 export PATH="$HOME/install/bin:$PATH"
 
-export C_INCLUDE_PATH="$HOME/install/include"
-export CPLUS_INCLUDE_PATH="$HOME/install/include"
-export CXX_INCLUDE_PATH="$HOME/install/include"
-
+export C_INCLUDE_PATH="$HOME/install/include:/usr/local/cuda-10.2/targets/x86_64-linux/include"
+export CPLUS_INCLUDE_PATH="$HOME/install/include:/usr/local/cuda-10.2/targets/x86_64-linux/include"
+export CXX_INCLUDE_PATH="$HOME/install/include:/usr/local/cuda-10.2/targets/x86_64-linux/include"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-10.2/targets/x86_64-linux/lib"
 #export CUDA_HOME="/usr/local/cuda-7.0/"
 #export CUDA_HOME="/usr/local/cuda-9.0/"
 export CUDA_HOME="/usr/local/cuda"
