@@ -165,7 +165,7 @@ export CUDA_INSTALL_PATH=$CUDA_HOME
 # export NVIDIA_COMPUTE_SDK_LOCATION="$HOME/install/gpu-sdk/"
 
 
-export PATH="$CUDA_HOME/bin:$PATH"
+export PATH="$CUDA_HOME/bin:/usr/bin:$PATH"
 # export GPGPUSIM_ROOT="$HOME/gpgpu-sim/"
 # export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 # export LD_LIBRARY_PATH="/usr/lib/nvidia-384/:$LD_LIBRARY_PATH"
