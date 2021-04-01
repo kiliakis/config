@@ -1,0 +1,27 @@
+#!/bin/bash
+
+while getopts ":hft" opt; do 
+    case ${opt} in
+      h )
+        echo "Usage:"
+        echo "    scporion [-f] [-t] source dest"
+        exit 0
+        ;;
+      f )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        # sshpass -f ~/.parml08.pass scp -r -4 parml08@orion.cslab.ece.ntua.gr:"$other" $last
+        sshpass -f ~/.parml08.pass rsync -rv --progress parml08@orion.cslab.ece.ntua.gr:"$other" $last
+        ;;
+      t )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        # sshpass -f ~/.parml08.pass scp -r -4 $other parml08@orion.cslab.ece.ntua.gr:$last
+        sshpass -f ~/.parml08.pass rsync -rv --progress $other kiliakis@orion.cslab.ece.ntua.gr:$last
+        ;;
+      \? ) echo "Usage scporion [-f] [-t] source dest"
+        ;;
+     esac
+done

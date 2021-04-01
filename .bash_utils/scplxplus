@@ -11,13 +11,15 @@ while getopts ":hft" opt; do
         shift
         last=${@:$#}
         other=${*%${!#}}
-        scp -r kiliakis@lxplus.cern.ch:"$other" $last
+        # sshpass -f ~/.lxplus.pass scp -r -4 kiliakis@lxplus8.cern.ch:"$other" $last
+        sshpass -f ~/.lxplus.pass rsync -rv --progress kiliakis@lxplus8.cern.ch:"$other" $last
         ;;
       t )
         shift
         last=${@:$#}
         other=${*%${!#}}
-        scp -r $other kiliakis@lxplus.cern.ch:$last
+        # sshpass -f ~/.lxplus.pass scp -r -4 $other kiliakis@lxplus8.cern.ch:$last
+        sshpass -f ~/.lxplus.pass rsync -rv --progress $other kiliakis@lxplus8.cern.ch:$last
         ;;
       \? ) echo "Usage scplxplus [-f] [-t] source dest"
         ;;

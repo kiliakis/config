@@ -2,16 +2,16 @@
 alias mount_aris="sshfs -o IdentityFile=/home/kiliakis/.ssh/aris_rsa kiliakis@login.aris.grnet.gr: ~/mountdirs/aris"
 alias ssh_aris="ssh -X -Y -i  /home/kiliakis/.ssh/aris_rsa kiliakis@login.aris.grnet.gr"
 
-alias mount_lxplus="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@lxplus.cern.ch: ~/mountdirs/lxplus"
+alias mount_lxplus="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@lxplus8.cern.ch: ~/mountdirs/lxplus"
 
 # CERN vms
-alias ssh_ubuntu14="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus.cern.ch kiliakis@137.138.152.44"
+alias ssh_ubuntu14="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus8.cern.ch kiliakis@137.138.152.44"
 #alias mount_ubuntu14="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44:/home/kiliakis ~/mountdirs/ubuntu14"
 
 # alias mount_gpgpusim="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@188.184.87.94:/home/kiliakis ~/mountdirs/gpgpusimVM"
-alias ssh_gpgpusim="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus.cern.ch kiliakis@188.184.87.94"
+alias ssh_gpgpusim="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus8.cern.ch kiliakis@188.184.87.94"
 
-alias lxplus="sshpass -f ~/.lxplus.pass ssh -4 -Y kiliakis@lxplus.cern.ch"
+alias lxplus="sshpass -f ~/.lxplus.pass ssh -4 -Y kiliakis@lxplus8.cern.ch"
 
 alias ssh_hpcbatch="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus.cern.ch kiliakis@hpc-batch.cern.ch"
 # alias mount_hpcbatch='sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@hpc-batch.cern.ch: ~/mountdirs/hpcbatch/'
@@ -34,7 +34,7 @@ alias ssh_mlabpc='ssh -X kiliakis@147.102.37.138'
 alias mount_mlabpc='sshfs -o IdentityFile=$HOME/.ssh/id_rsa kiliakis@147.102.37.138: ~/mountdirs/mlabpc/'
 
 alias ssh_liono="ssh -X kiliakis@liono.microlab.ntua.gr"
-alias mount_liono="sshfs -o IdentityFile=$HOME/.ssh/id_rsa kiliakis@liono.microlab.ntua.gr: ~/mountdirs/liono"
+alias mount_liono="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@liono.microlab.ntua.gr: ~/mountdirs/liono"
 
 # Local vms
 alias start_local16="vboxmanage startvm ubuntu16 --type headless"
@@ -47,6 +47,8 @@ alias ssh_local16="ssh -Xt -p 2522 kiliakis@localhost"
 #alias ssh_evolve="ssh -Xt -J kiliakis@liono.microlab.ntua.gr iliakisk@92.43.249.197"
 alias ssh_evolve="ssh -Xt iliakisk@92.43.249.197"
 alias mount_evolve='sshfs -o IdentityFile=$HOME/.ssh/id_rsa iliakisk@92.43.249.197: ~/mountdirs/evolve/'
+alias ssh_evolve65="ssh -Xt -J iliakisk@92.43.249.197 iliakisk@172.9.0.65"
+alias ssh_evolve-megakv="ssh -Xt -J iliakisk@92.43.249.197 iliakisk@172.9.0.65 ./fault-tolerant-docker/3-exec.sh"
 
 # Ohter aliases
 alias cscope-generate='find . -type f -name "*.cc" -o -name "*.h"'
@@ -54,3 +56,9 @@ alias spotify='spotify --force-device-scale-factor=2'
 alias ntuavpn='sudo openvpn ~/Documents/ntua.ovpn'
 alias mlabvpn='sudo openvpn ~/Documents/mlabpc.ovpn'
 alias conkyrestart='pkill -HUP conky'
+
+
+#parml
+
+alias ssh_orion='sshpass -f ~/.parml08.pass ssh parml08@orion.cslab.ece.ntua.gr'
+alias ssh_scirouter='sshpass -f ~/.parml08.pass ssh parml08@orion.cslab.ece.ntua.gr ssh scirouter'

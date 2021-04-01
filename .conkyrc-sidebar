@@ -1,0 +1,151 @@
+
+############################################################################################
+# Sidebar-Conky					 					   #
+# by wim66 https://www.google.com/+WillemO						   #
+# 26-5-15										   #
+# "Inspired by" other people's code							   #
+# Calendar, more great conky's http://erikdubois.be/category/conky			   #
+# Jesse Avalos http://speedracker.deviantart.com/					   #
+# Weather font by Kelly Kretchek https://plus.google.com/u/0/103934698784251707937/posts   #
+# Wallpaper http://0rax0.deviantart.com/art/Linux-2014-Wallpaper-457151439		   #
+# Use with Conky-Manager								   #
+# http://www.teejeetech.in/p/conky-manager.html						   #
+#											   #
+############################################################################################
+
+background yes
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+imlib_cache_size 0
+update_interval 5
+cpu_avg_samples 5
+format_human_readable
+
+alignment top_right
+gap_x 0
+gap_y 0
+minimum_size 600 2304
+maximum_width 600
+
+own_window yes
+own_window_type normal	# options are: normal/override/dock/desktop/panel
+own_window_class Conky
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+#own_window_colour 333333
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 0
+
+border_inner_margin 0
+border_outer_margin 0
+
+default_bar_size 100 6
+draw_shades no
+default_shade_color 000000
+draw_outline no
+default_outline_color 000000
+draw_borders no
+draw_graph_borders yes
+default_graph_size 100,580
+show_graph_scale no
+show_graph_range no
+
+override_utf8_locale yes
+use_xft yes
+xftfont Adele:normal:size=15
+xftalpha 1
+uppercase no
+max_text_width 40
+
+default_color ffffff
+color1 ffffff
+color2 FF5A45
+color3 81CAE0
+color4 FF5A45
+net_if wlp0s20f3
+
+TEXT
+# day/time
+${goto 10}${voffset 10}${font Adele:bold:size=26}${color1}${time %A}${font Adele:bold:size=26}${alignr 5}${time %H:%M}
+#
+#calendar
+${voffset -15}${color1}${font Adele:normal:size=16}${alignc}${execpi 80000 ncal -M|sed '/\(20[0-9][0-9]\)/!s/^.*$/${offset 10}${font Courier:size=12,weight:light}${color4} &/;/\(20[0-9][0-9]\)/!s/.\{8\}$/${color3}&/;s/${color3} '"`date +%_d`"' /${color1} '"`date +%_d`"'${color3} /;/color1/!s/ '"`date +%_d`"'$c/${color1} '"`date +%_d`"'$c/;/color1/!s/ '"`date +%_d`"' /${color1} '"`date +%_d`"'${color2} /'}
+#
+# info
+
+${goto 10}$color1${voffset -10}${font Adele:normal:size=16}${execi 80000 lsb_release -d | cut -f 2| tr "[:upper:]" "[:upper:]"}${alignr 5}codename: ${execi 80000 lsb_release -c | cut -f 2| tr "[:upper:]" "[:upper:]"}
+# $sysname
+${goto 10}$kernel
+${goto 10}Desktop:${alignr 5}$XDG_CURRENT_DESKTOP
+${goto 10}Installation date:${alignr 5}${execi 80000 ls -ld /lost+found | cut -d' ' -f 6-7 --output-delimiter=' - '}
+${goto 10}Uptime:${alignr 5}$uptime
+#
+# cpu load/temp/graph
+${goto 10}${voffset 5}${font Adele:bold:size=16}CPU1: ${cpu cpu1}%${alignr 10}${exec sensors|grep 'Core 0'|awk '{print $3}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu1 65,580 66241C FF5A45}
+${goto 10}${voffset 0}${color1}${font Adele:bold:size=16}CPU2: ${cpu cpu2}%${alignr 10}${exec sensors|grep 'Core 1'|awk '{print $3}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu2 65,580 66241C FF5A45}
+${goto 10}${voffset 0}${color1}${font Adele:bold:size=16}CPU3: ${cpu cpu3}%${alignr 10}${exec sensors|grep 'Core 2'|awk '{print $3}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu3 65,580 66241C FF5A45}
+${goto 10}${voffset 0}${color1}${font Adele:bold:size=16}CPU4: ${cpu cpu4}%${alignr 10}${exec sensors|grep 'Core 3'|awk '{print $3}'}
+${goto 10}${voffset -5}${color2}${cpugraph cpu4 65,580 66241C FF5A45}
+#
+# top processes
+${voffset -5}${font Adele:bold:size=18}${color1}${alignc}Top Processes ${font}
+${voffset 4}${goto 10}${top name 1}${alignr 10}${top cpu 1}%
+${goto 10}${voffset -2}${top name 2}${alignr 10}${top cpu 2}%
+${goto 10}${voffset -2}${top name 3}${alignr 10}${top cpu 3}%
+${goto 10}${voffset -2}${top name 4}${alignr 10}${top cpu 4}%
+#
+# top memory
+${goto 10}${voffset 10}${font Adele:bold:size=18}Memory${goto 170}${color2}${membar 15, 280}${alignr 10}${color1}$memperc%
+${goto 10}${color1}${voffset -2}${font}${top_mem name 1}${alignr 10}${top mem 1}%
+${goto 10}${voffset -2}${top_mem name 2}${alignr 10}${top mem 2}%
+${goto 10}${voffset -2}${top_mem name 3}${alignr 10}${top mem 3}%
+${goto 10}${voffset -2}${top_mem name 4}${alignr 10}${top mem 4}%
+#
+#network
+${voffset 10}${goto 10}${font Adele:bold:size=18}Network${alignr 10}${font}SSID: ${wireless_essid wlp0s20f3}
+${goto 10}Signal:${goto 170}${color2}${wireless_link_bar 15, 280 wlp0s20f3}${color1}${alignr 10}${wireless_link_qual_perc wlp0s20f3}%
+${goto 10}IP: ${alignr 10}${addr wlp0s20f3}
+${voffset 5}${goto 10}${color1}Upspeed:${alignr 10}${upspeed wlp0s20f3}
+${voffset 5}${goto 10}${color1}Downspeed:${alignr 10}${downspeed wlp0s20f3}
+${goto 10}${voffset 20}Total up:${alignr 10}${totalup wlp0s20f3}
+${goto 10}${color2}${upspeedgraph wlp0s20f3 65,580 66241C FF5A45 100 -l}
+${goto 10}${color1}Down:$color1${alignr 10}${downspeed wlp0s20f3}
+${goto 10}Total down:${alignr 10}${totaldown wlp0s20f3}
+${goto 10}${color2}${downspeedgraph wlp0s20f3 65,580 66241C FF5A45 100 -l}
+
+
+
+#
+# weather
+#
+#------> Check Qaisar Nawaz' blog on how to change the weather location code: http://myconkys.blogspot.com.au/2014/04/weather-location-settings.html <-----#
+#
+
+
+#${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=727232&u=c" -o ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml}\
+#${font Adele:light:size=16}${goto 10}${color1}${voffset 0}${execi 300 grep "yweather:location" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}, ${execi 300 grep "yweather:location" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "country=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
+#
+## weather discription
+#${goto 10}${voffset 0}${color1}${font Adele:light:size=16}\
+#${execi 360 grep "yweather:condition" ~/.conkyrt/Sidebar-Conky/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}\
+#${font}
+##
+## temp
+#${font LG_Weather_Z:size=35}${goto 10}${voffset 0}${execi 300 grep "yweather:condition" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font GeosansLight:normal:size=12}Celsius}
+## high/low
+#${font}${goto 30}${voffset 5}${execi 300 grep "yweather:forecast" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°\
+#${goto 85}${voffset 0}${execi 300 grep "yweather:forecast" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°
+##
+## weather icons
+##
+#${font Scalable weather v12.0:size=90,weight:normal}${color3}${voffset -90}${goto 150}${execi 300 sh ~/.conkyrt/Sidebar-Conky/weather/weather_font $(grep "yweather:condition" ~/.conkyrt/Sidebar-Conky/weather/cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*")}
+##
+#${image ~/.conkyrt/Sidebar-Conky/arrow-up.png -p 20,2048 -s 30x30}
+##
+#${image ~/.conkyrt/Sidebar-Conky/arrow-down.png -p 130,2048 -s 30x30}
+##

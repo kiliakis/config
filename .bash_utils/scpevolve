@@ -1,0 +1,27 @@
+#!/bin/bash
+
+while getopts ":hft" opt; do 
+    case ${opt} in
+      h )
+        echo "Usage:"
+        echo "    scpevolve [-f] [-t] source dest"
+        exit 0
+        ;;
+      f )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        # scp -r iliakisk@92.43.249.197:"$other" $last
+        rsync -rv --progress iliakisk@92.43.249.197:"$other" $last
+        ;;
+      t )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        # scp -r $other iliakisk@92.43.249.197:$last
+        rsync -rv --progress $other iliakisk@92.43.249.197:$last
+        ;;
+      \? ) echo "Usage scpevolve [-f] [-t] source dest"
+        ;;
+     esac
+done
