@@ -144,15 +144,18 @@ export PS1="\n$grey\t $blue\u $green\h $red\$(__git_ps1) $purple\w \n$green→$r
 # export PS1="$purple\u$green\$(__git_ps1)$cyan \W $ $reset"
 LS_COLORS=$LS_COLORS:'ex=0;35:' ; export LS_COLORS
 
+export INSTALL_DIR="$HOME/install"
+
 export CPLUS_INCLUDE_PATH="$HOME/install/inlcude"
 export C_INCLUDE_PATH="$HOME/install/inlcude"
 export LIBRARY_PATH="$HOME/install/lib"
 
+export BLONDHOME="$HOME/git/blond"
 # added by Anaconda3 4.4.0 installer
-export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
+#export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
 
 # Add install bins to $PATH
-export PATH="/home/kiliakis/install/bin:$PATH"
-export PATH="/home/kiliakis/.bash_utils/:$PATH"
+#export PATH="/home/kiliakis/install/bin:$PATH"
+#export PATH="/home/kiliakis/.bash_utils/:$PATH"
 
-export PYTHONPATH="$HOME/git/pyscripts/:$HOME/git/:$PYTHONPATH"
+export PYTHONPATH="$HOME/git/pymodules/:$HOME/git:$PYTHONPATH"

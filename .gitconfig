@@ -5,11 +5,8 @@
 	excludesfile = ~/.gitignore_global
 [push]
 	default = nothing 
-[merge]
-	conflictstyle = diff3
-    tool = vimdiff
 [user]
-	email = konstantinos.iliakis@cern.ch
+	email = kiliakis@microlab.ntua.gr
 	name = Konstantinos Iliakis
 [mergetool]
 	promt = false
