@@ -155,4 +155,8 @@ export PATH="/home/kiliakis/install/anaconda3/bin:$PATH"
 export PATH="/home/kiliakis/install/bin:$PATH"
 export PATH="/home/kiliakis/.bash_utils/:$PATH"
 
+export PATH="/home/kiliakis/install/pycharm-community-2021.1.1/bin/:$PATH"
+
 export PYTHONPATH="$HOME/git/pyscripts/:$HOME/git/:$PYTHONPATH"
+
+export GOPATH=$HOME/git/go

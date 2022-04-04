@@ -1,0 +1,27 @@
+#!/bin/bash
+
+while getopts ":hft" opt; do 
+    case ${opt} in
+      h )
+        echo "Usage:"
+        echo "    scpmlabpc [-f] [-t] source dest"
+        exit 0
+        ;;
+      f )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        # scp -r mailto:kiliakis@147.102.37.138:"$other" $last
+        rsync -rv --progress kiliakis@147.102.37.138:"$other" $last
+        ;;
+      t )
+        shift
+        last=${@:$#}
+        other=${*%${!#}}
+        # scp -r $other mailto:kiliakis@147.102.37.138:$last
+        rsync -rv --progress $other kiliakis@147.102.37.138:$last
+        ;;
+      \? ) echo "Usage scpmlabpc [-f] [-t] source dest"
+        ;;
+     esac
+done

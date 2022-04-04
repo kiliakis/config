@@ -4,6 +4,10 @@ alias ssh_aris="ssh -X -Y -i  /home/kiliakis/.ssh/aris_rsa kiliakis@login.aris.g
 
 alias mount_lxplus="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@lxplus8.cern.ch: ~/mountdirs/lxplus"
 
+alias ssh_cernpc="ssh -X kiliakis@128.141.159.40"
+
+alias mount_cernpc="sshfs kiliakis@128.141.159.40: ~/mountdirs/cernpc"
+
 # CERN vms
 alias ssh_ubuntu14="sshpass -f ~/.lxplus.pass ssh -X4t -J kiliakis@lxplus8.cern.ch kiliakis@137.138.152.44"
 #alias mount_ubuntu14="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@137.138.152.44:/home/kiliakis ~/mountdirs/ubuntu14"
@@ -36,6 +40,9 @@ alias mount_mlabpc='sshfs -o IdentityFile=$HOME/.ssh/id_rsa kiliakis@147.102.37.
 alias ssh_liono="ssh -X kiliakis@liono.microlab.ntua.gr"
 alias mount_liono="sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa kiliakis@liono.microlab.ntua.gr: ~/mountdirs/liono"
 
+alias ssh_pelef_liono="ssh -i ~/.ssh/pelef_liono_rsa -X pelef@liono.microlab.ntua.gr"
+alias mount_pelef_liono='sshfs -o IdentityFile=$HOME/.ssh/pelef_liono_rsa pelef@liono.microlab.ntua.gr: ~/mountdirs/pelef_liono'
+
 # Local vms
 alias start_local16="vboxmanage startvm ubuntu16 --type headless"
 alias stop_local16="vboxmanage controlvm ubuntu16 poweroff soft"
@@ -60,5 +67,18 @@ alias conkyrestart='pkill -HUP conky'
 
 #parml
 
+alias mount_orion='sshfs parml08@orion.cslab.ece.ntua.gr: ~/mountdirs/orion/ -o password_stdin < ~/.parml08.pass'
 alias ssh_orion='sshpass -f ~/.parml08.pass ssh parml08@orion.cslab.ece.ntua.gr'
 alias ssh_scirouter='sshpass -f ~/.parml08.pass ssh parml08@orion.cslab.ece.ntua.gr ssh scirouter'
+
+
+# okeanos
+alias ssh_okeanos='ssh user@snf-20455.ok-kno.grnetcloud.net'
+alias mount_okeanos='sshfs -o IdentityFile=/home/kiliakis/.ssh/id_rsa user@snf-20455.ok-kno.grnetcloud.net:/home/user ~/mountdirs/okeanos'
+alias ssh_okeanos_ubuntu16='ssh -X user@snf-883881.vm.okeanos.grnet.gr'
+alias ssh_okeanos_freqtrade='ssh -X user@snf-883839.vm.okeanos.grnet.gr'
+
+
+# gcloud 
+alias ssh_mew='ssh -i ~/.ssh/gcloud_iliakiskostis_rsa iliakiskostis@35.226.176.125'
+alias ssh_mew2='ssh -i ~/.ssh/gcloud_iliakiskostis_rsa iliakiskostis@35.231.167.38'
